@@ -1,0 +1,9 @@
+1: db.Sakila_films.find({Actors: {$elemMatch: {"First name": "ED", "Last name": "CHASE"}}})
+2: db.Sakila_films.find({Description: /documentary/i, Category: "Horror"}).pretty()
+3: db.Sakila_films.find({Rating: "G"}).count()
+3: db.Sakila_films.find({Rating: "G"}).toArray().length
+4: db.video_movieDetails.find({$and: [{$where: "/201[3|2]/.test(this.year)"}, {runtime: {$gte: 60, $lte: 150}}]}).pretty()
+5: db.video_movieDetails.find({"tomato.image": "certified"})
+6: db.video_movieDetails.aggregate([{$group:{"_id": "$rated", count: {$sum: 1}}}])
+
+https://www.guru99.com/node-js-mongodb.html

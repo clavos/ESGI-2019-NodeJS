@@ -1,0 +1,12 @@
+checker.js
+executor.js
+**/datasets
+**/config
+**/exercise-*/scripts/*
+javascript/examples/
+.idea
+docker-compose.yml
+ExercicesMongoDB.txt
+server/node_modules
+SampleCollections
+commmand.txt
