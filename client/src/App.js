@@ -37,9 +37,10 @@ class App extends Component {
             Learn React
 
           </a>
-        </header>
-        <ToggleButton theme={this.state.theme} onClick={this.handleToggle}/>
+          <ToggleButton theme={this.state.theme} onClick={this.handleToggle}/>
         <LoginFormContainer/>
+        </header>
+        
       </div>
     );
   }

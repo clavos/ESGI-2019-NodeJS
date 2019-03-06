@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost', {
-    dbName: "SampleCollections",
+    dbName: "Shirizu",
     useNewUrlParser: true
 });
 const db = mongoose.connection;

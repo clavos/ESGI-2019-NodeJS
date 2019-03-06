@@ -8,14 +8,24 @@ class LoginFormContainer extends React.Component{
     }
 
     handleChange = (value, field) => {
-        console.log(field, value);
         this.setState({
             [field]: value
         });
     }
 
     handleSubmit = ()=>{
-        console.log(this.state);
+        // console.log(this.state);
+        fetch('http://127.0.0.1:3000/users/login_check', {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(this.state),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+        .then((response)=> response.json())
+        .then(data => localStorage.setItem('token', data.token))
+        .catch(error=>console.log(error));
     }
 
     render(){

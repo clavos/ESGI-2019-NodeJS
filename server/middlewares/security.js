@@ -1,14 +1,14 @@
 const verifyJWTToken = require('../libs/auth');
 
 const verifyToken = (req, res, next) => {
-    if(req.path === "/login_check"){
+    if(req.path === "/users/login_check"){
         next();
     } else {
         const auth = req.get('Authorization');
         if(!auth || !auth.startWith('Bearer')){
             res.sendStatus(401);
         } else {
-            verifyJWTToken(auth.replace('Bearer', ''))
+            verifyJWTToken(auth.replace('Bearer ', ''))
                 .then(decodedToken => {
                     req.user = decodedToken;
                     next();
