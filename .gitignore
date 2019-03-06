@@ -9,3 +9,6 @@ docker-compose.yml
 ExercicesMongoDB.txt
 server/node_modules
 SampleCollections
+./server/db.js
+
+client/node_modules

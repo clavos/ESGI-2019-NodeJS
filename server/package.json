@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "./node_modules/.bin/nodemon --legacy-watch index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
-    "mongoose": "^5.4.17"
+    "mongoose": "^5.4.17",
+    "nodemon": "^1.18.10"
   }
 }
