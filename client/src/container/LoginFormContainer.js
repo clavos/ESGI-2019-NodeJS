@@ -14,8 +14,8 @@ class LoginFormContainer extends React.Component{
     }
 
     handleSubmit = ()=>{
-        // console.log(this.state);
-        fetch('http://127.0.0.1:3000/users/login_check', {
+        console.log(this.state);
+        fetch('http://127.0.0.1:3001/users/login_check', {
             method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
@@ -24,7 +24,7 @@ class LoginFormContainer extends React.Component{
             }
         })
         .then((response)=> response.json())
-        .then(data => localStorage.setItem('token', data.token))
+        .then(data => {localStorage.setItem('token', data.token); console.log(data)})
         .catch(error=>console.log(error));
     }
 
