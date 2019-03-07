@@ -1,16 +1,17 @@
 const express = require('express');
-const MovieDetail = require('../models/movie');
+const Movie = require('../models/movie');
 const router = express.Router();
 
+//Get all movies
 router.get('/', (req, res) => {
-    MovieDetail.find(req.query)
+    Movie.find(req.query)
         .then(data =>
             res.status(200).send(data)
         );
 });
-
+//Get movies by year
 router.get('/:year', (req, res) => {
-    MovieDetail.findOne({year: req.params.year})
+    Movie.find({year: req.params.year})
         .then(data =>
             res.status(200).send(data)
         );
