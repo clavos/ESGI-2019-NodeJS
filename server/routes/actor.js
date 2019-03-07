@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 //Add actor
 router.post('/add', (req, res) => {
     // Validate request
+    console.log("here");
     if(!req.body.firstname) {
         return res.status(400).send({
             message: "Firstname content can not be empty"
