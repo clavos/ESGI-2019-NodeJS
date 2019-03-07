@@ -4,6 +4,7 @@ import LoginFormContainer from "./container/LoginFormContainer";
 import MainMenuBar from './components/MainMenuBar';
 import Index from './container/Home';
 import DashboardA from './container/DashBoard';
+import ListMovies from "./container/ListMovies";
 
 function Login() {
     return <LoginFormContainer/>;
@@ -17,6 +18,10 @@ function Home() {
     return <Index/>;
 }
 
+function Movies() {
+    return <ListMovies/>;
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -27,6 +32,7 @@ function AppRouter() {
                 <Route path="/" exact component={Home} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/dashboard" exact component={Dashboard} />
+                <Route path="/movies" exact component={Movies} />
             </div>
         </Router>
     );
