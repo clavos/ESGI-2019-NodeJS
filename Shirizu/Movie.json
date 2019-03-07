@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5c81025e20a8e819cf88c0a1"},"title":"Titanic","year":{"$numberInt":"2019"}}
+{"_id":{"$oid":"5c812bd26b6bfb31f357e766"},"title":"Captain Marvel","year":{"$numberInt":"2019"}}
