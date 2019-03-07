@@ -1,10 +1,12 @@
 import React from "react";
 import LoginForm from '../components/LoginForm';
+import { Redirect } from 'react-router-dom';
 
 class LoginFormContainer extends React.Component{
     state = {
         username: "",
-        password: ""
+        password: "",
+        toDashboard: false
     }
 
     handleChange = (value, field) => {
@@ -24,12 +26,16 @@ class LoginFormContainer extends React.Component{
             }
         })
         .then((response)=> response.json())
-        .then(data => {localStorage.setItem('token', data.token); console.log(data)})
+        .then(data => {localStorage.setItem('token', data.token); console.log(data); this.setState({toDashboard: true});})
         .catch(error=>console.log(error));
     }
 
-    render(){
-        return <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+    render() {
+        if (this.state.toDashboard === true) {
+            return <Redirect to='/dashboard'/>
+        } else {
+            return <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        }
     }
 }
 
