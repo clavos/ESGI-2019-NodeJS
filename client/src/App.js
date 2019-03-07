@@ -1,36 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './components/ToggleButton'
-import ToggleButton from './components/ToggleButton';
-import LoginForm from './components/LoginForm';
-import LoginFormContainer from './container/LoginFormContainer';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import LoginFormContainer from "./container/LoginFormContainer";
 import MainMenuBar from './components/MainMenuBar';
+import Index from './container/Home';
+import DashboardA from './container/DashBoard';
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      triggerLoginForms: false
-    }
-  }
-
-  triggerLoginForm = () =>{
-     var value = (this.state.triggerLoginForms)?false:true;
-      this.setState({
-          triggerLoginForms: value
-      });
-  }
-
-  render() {
-
-    return (
-      <div className="App">
-          <MainMenuBar triggerLoginForm={this.triggerLoginForm}/>
-          <LoginFormContainer triggerLoginForms={this.state.triggerLoginForms}/>
-      </div>
-    );
-  }
+function Login() {
+    return <LoginFormContainer/>;
 }
 
-export default App;
+function Dashboard() {
+    return <DashboardA/>;
+}
+
+function Home() {
+    return <Index/>;
+}
+
+function AppRouter() {
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <MainMenuBar/>
+                </nav>
+                <Route path="/" exact component={Home} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/dashboard" exact component={Dashboard} />
+            </div>
+        </Router>
+    );
+}
+
+export default AppRouter;
