@@ -1,4 +1,11 @@
-import React from "react";
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import './components/ToggleButton'
+import ToggleButton from './components/ToggleButton';
+import LoginForm from './components/LoginForm';
+import LoginFormContainer from './container/LoginFormContainer';
+import ActorFormContainer from './container/ActorFormContainer';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LoginFormContainer from "./container/LoginFormContainer";
 import MainMenuBar from './components/MainMenuBar';
