@@ -15,4 +15,4 @@ app.use('/movies', MovieRoute);
 app.use('/users', UserRoute);
 
 
-app.listen(3000, () => console.log('Listening'));
+app.listen(3001, () => console.log('Listening'));
