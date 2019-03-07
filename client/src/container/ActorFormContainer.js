@@ -21,8 +21,9 @@ class ActorFormContainer extends React.Component{
 
     handleSubmit = ()=>{
         console.log(this.props.method);
-        fetch('http://127.0.0.1:3001/actors/add', {
-            method: this.props.method,
+        console.log(JSON.stringify(this.state));
+        fetch('http://127.0.0.1:3000/actors/add', {
+            method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
             headers: {
