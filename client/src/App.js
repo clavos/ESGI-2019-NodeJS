@@ -5,6 +5,8 @@ import './components/ToggleButton'
 import ToggleButton from './components/ToggleButton';
 import LoginForm from './components/LoginForm';
 import LoginFormContainer from './container/LoginFormContainer';
+import ActorFormContainer from './container/ActorFormContainer';
+
 
 class App extends Component {
   constructor(props){
@@ -39,6 +41,8 @@ class App extends Component {
           </a>
           <ToggleButton theme={this.state.theme} onClick={this.handleToggle}/>
         <LoginFormContainer/>
+        <ActorFormContainer method="PUT"/>
+
         </header>
         
       </div>

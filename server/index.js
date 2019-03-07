@@ -12,7 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(verifyToken);
 app.use('/movies', MovieRoute);
-app.use('/users', UserRoute);
+app.use('/user', UserRoute);
 
 
 app.listen(3001, () => console.log('Listening'));
