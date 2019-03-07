@@ -17,7 +17,7 @@ class LoginFormContainer extends React.Component{
 
     handleSubmit = ()=>{
         console.log(this.state);
-        fetch('http://127.0.0.1:3001//login_check', {
+        fetch('http://127.0.0.1:3001/user/login_check', {
             method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
