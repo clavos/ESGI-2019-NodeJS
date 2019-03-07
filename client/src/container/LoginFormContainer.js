@@ -29,7 +29,11 @@ class LoginFormContainer extends React.Component{
     }
 
     render(){
-        return <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        if ( this.props.triggerLoginForms ) {
+            return <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        } else {
+            return null
+        }
     }
 }
 
