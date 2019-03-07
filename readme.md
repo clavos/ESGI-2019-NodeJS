@@ -1,0 +1,1 @@
+Import into MongoDB : `mongoimport --db Shirizu --collection users < User.json`

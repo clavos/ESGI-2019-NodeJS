@@ -6,48 +6,37 @@ import ToggleButton from './components/ToggleButton';
 import LoginForm from './components/LoginForm';
 import LoginFormContainer from './container/LoginFormContainer';
 import ActorFormContainer from './container/ActorFormContainer';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import LoginFormContainer from "./container/LoginFormContainer";
+import MainMenuBar from './components/MainMenuBar';
+import Index from './container/Home';
+import DashboardA from './container/DashBoard';
 
-
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      theme: "dark"
-    }
-  }
-  handleToggle = () => {
-    const newTheme = (this.state.theme == 'dark')?'light':'dark';
-    this.setState({
-      theme: newTheme
-    })
-  }
-  
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-
-          </a>
-          <ToggleButton theme={this.state.theme} onClick={this.handleToggle}/>
-        <LoginFormContainer/>
-        <ActorFormContainer method="PUT"/>
-
-        </header>
-        
-      </div>
-    );
-  }
+function Login() {
+    return <LoginFormContainer/>;
 }
 
-export default App;
+function Dashboard() {
+    return <DashboardA/>;
+}
+
+function Home() {
+    return <Index/>;
+}
+
+function AppRouter() {
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <MainMenuBar/>
+                </nav>
+                <Route path="/" exact component={Home} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/dashboard" exact component={Dashboard} />
+            </div>
+        </Router>
+    );
+}
+
+export default AppRouter;
