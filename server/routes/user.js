@@ -17,7 +17,7 @@ router.post('/login_check', (req, res) => {
             return res.status(404).json("MArche pas");
         }
         else if(req.body.password == user.password){
-            jwt.sign({username: user.username}, "secret",  {expiresIn: 3600}, (err, token)=>{
+            jwt.sign({username: user.username}, "MyBestToken",  {expiresIn: 3600}, (err, token)=>{
                 if(err){
                     console.error('cha mache pas', err);
                 }else{

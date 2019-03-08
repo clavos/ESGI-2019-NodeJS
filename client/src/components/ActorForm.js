@@ -8,9 +8,9 @@ class ActorForm extends React.Component {
             return false;
         }}>
             <p>First name</p>
-            <input name="firstname" onChange={(event) => this.props.onChange(event.currentTarget.value, "firstname")}/>
+            <input name="firstName" onChange={(event) => this.props.onChange(event.currentTarget.value, "firstName")}/>
             <p>Last name</p>
-            <input name="lastname" onChange={(event) => this.props.onChange(event.currentTarget.value, "lastname")}/><br/>
+            <input name="lastName" onChange={(event) => this.props.onChange(event.currentTarget.value, "lastName")}/><br/>
             <input type="submit" value="Submit"/>
         </form>
     }
