@@ -42,4 +42,30 @@ router.post('/login_check', (req, res) => {
         }
     });
 });
+//Register
+router.post('/add', (req, res) => {
+    // Validate request
+    if(!req.body.username) {
+        return res.status(400).send({
+            message: "Username content can not be empty"
+        });
+    }
+    if(!req.body.password) {
+        return res.status(400).send({
+            message: "Password content can not be empty"
+        });
+    }
+    const user = new User({
+        username: req.body.username,
+        password: req.body.password
+    });
+    user.save()
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while creating the user."
+        });
+    });
+});
 module.exports = router;
