@@ -2,10 +2,6 @@ import React from "react";
 import MovieForm from '../components/MovieForm';
 
 class MovieFormContainer extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
     state = {
         title: "",
         description: ""
