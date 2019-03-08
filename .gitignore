@@ -8,6 +8,6 @@ javascript/examples/
 docker-compose.yml
 ExercicesMongoDB.txt
 server/node_modules
-./server/db.js
+server/libs/db.js
 
 client/node_modules
