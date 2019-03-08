@@ -8,7 +8,7 @@ class ReviewForm extends React.Component {
             return false;
         }}>
             <p>Note</p>
-            {/* <input name="firstName" onChange={(event) => this.props.onChange(event.currentTarget.value, "firstName")}/> */}
+            {/* <input name="firstname" onChange={(event) => this.props.onChange(event.currentTarget.value, "firstname")}/> */}
             <select name="score" onChange={(event) => this.props.onChange(event.currentTarget.value, "score")}>
                 <option value="1">1</option>
                 <option value="2">2</option>

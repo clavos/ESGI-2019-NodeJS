@@ -3,8 +3,8 @@ import ActorForm from '../components/ActorForm';
 
 class ActorFormContainer extends React.Component{
     state = {
-        firstName: "",
-        lastName: ""
+        firstname: "",
+        lastname: ""
     }
 
     handleChange = (value, field) => {
