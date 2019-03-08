@@ -9,5 +9,6 @@ docker-compose.yml
 ExercicesMongoDB.txt
 server/node_modules
 server/libs/db.js
-
 client/node_modules
+client/Dockerfile
+server/Dockerfile
