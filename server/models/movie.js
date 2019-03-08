@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const db = require('../libs/db');
-const review = require('./review')
+const reviewSchema = require('./review')
 
 const Schema = mongoose.Schema;
 const movieSchema = new Schema({
@@ -8,7 +8,7 @@ const movieSchema = new Schema({
     description: String,
     year: {type: Number, min: 1850},
     releaseDate: Date,
-    reviews: [review]
+    reviews: [reviewSchema]
 });
 
 module.exports = db.model("movie", movieSchema);

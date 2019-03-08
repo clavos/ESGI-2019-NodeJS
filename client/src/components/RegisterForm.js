@@ -1,6 +1,6 @@
 import React from "react";
 
-class LoginForm extends React.Component {
+class RegisterForm extends React.Component {
     render(){
         return <form onSubmit={(event)=>{
             event.preventDefault();
@@ -16,4 +16,4 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm;
+export default RegisterForm;

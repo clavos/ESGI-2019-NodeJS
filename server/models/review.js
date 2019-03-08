@@ -8,4 +8,4 @@ const reviewSchema = new Schema({
     score: { type: Number, min: 0, max: 5 }
 });
 
-module.exports = db.model("review", reviewSchema);
+module.exports = reviewSchema;
