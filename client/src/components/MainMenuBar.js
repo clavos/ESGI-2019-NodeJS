@@ -16,6 +16,7 @@ class ButtonAppBar extends React.Component {
             Shirizu
             </Typography>
             <Button color="inherit" component={Link} to="/login">Login</Button>
+            <Button color="inherit" component={Link} to="/Register">Register</Button>
                 </Toolbar>
                 </AppBar>
                 </div>

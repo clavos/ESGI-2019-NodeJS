@@ -7,6 +7,7 @@ class ReviewFormContainer extends React.Component{
     }
     
     state = {
+        idMovie: "",
         score: "",
         Comment: ""
     }
@@ -19,6 +20,7 @@ class ReviewFormContainer extends React.Component{
     }
 
     handleSubmit = ()=>{
+        this.state.idMovie = "5c81025e20a8e819cf88c0a1";
         console.log(JSON.stringify(this.state), localStorage.getItem('token'));
         fetch('http://127.0.0.1:3001/review/add', {
             method: "POST",
