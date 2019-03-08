@@ -1,19 +1,19 @@
 const verifyJWTToken = require('../libs/auth');
 
 const verifyToken = (req, res, next) => {
-    console.log("check");
+    // console.log("check");
     if(req.path === "/user/login_check" || req.path === "/user" ){
         next();
     } else {
-        console.log("check2");
+        // console.log("check2");
         const auth = req.get('Authorization');
-        console.log(typeof auth ,auth);
+        // console.log(typeof auth ,auth);
         if(!auth || !auth.startsWith('Bearer')){
             res.sendStatus(401);
         } else {
             verifyJWTToken.verifyToken(auth.replace('Bearer ', ''))
                 .then(decodedToken => {
-                    console.log(decodedToken);
+                    //console.log(decodedToken);
                     req.user = decodedToken;
                     next();
                 })

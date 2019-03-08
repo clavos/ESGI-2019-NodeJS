@@ -6,6 +6,8 @@ import ToggleButton from './components/ToggleButton';
 import LoginForm from './components/LoginForm';
 import LoginFormContainer from './container/LoginFormContainer';
 import ActorFormContainer from './container/ActorFormContainer';
+import ReviewFormContainer from './container/ReviewFormContainer';
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MainMenuBar from './components/MainMenuBar';
 import Index from './container/Home';
@@ -32,6 +34,10 @@ function Actors() {
     return <ActorFormContainer/>;
 }
 
+function Reviews() {
+    return <ReviewFormContainer id=""/>;
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -44,6 +50,8 @@ function AppRouter() {
                 <Route path="/dashboard" exact component={Dashboard} />
                 <Route path="/movies" exact component={Movies} />
                 <Route path="/addactors" exact component={Actors} />
+                <Route path="/review/add" exact component={Reviews} />
+
             </div>
         </Router>
     );
