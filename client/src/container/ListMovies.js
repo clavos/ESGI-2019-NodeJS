@@ -47,14 +47,12 @@ class ListMovies extends React.Component {
                 return results.json();
             }).then(data => {
             this.setState({movies: data});
-            console.log("state", this.state.movies);
         }).catch(error=>console.log(error));
     }
 
     redirectToMovie = (key) => {
-        console.log(key);
-        //this.setState({toMovie: true});
-        //this.setState({movieid: movieid});
+        this.setState({movieid: key, toMovie: true});
+
     }
 
     render(){
@@ -62,7 +60,7 @@ class ListMovies extends React.Component {
         if (this.state.toMovie === true) {
             return <Redirect to= {{
                 pathname: '/movie',
-                search: '?mv='+this.state.movie_id
+                state: { idMovie: this.state.movieid }
             }}/>
         } else {
             return (<div>
@@ -70,7 +68,7 @@ class ListMovies extends React.Component {
                     <GridList spacing={1} className={classes.gridList}>
                         {this.state.movies.map((movie) => {
                             return (
-                                <GridListTile key={movie._id} onClick={this.redirectToMovie(movie._id)} cols={1} rows={4}>
+                                <GridListTile key={movie._id} onClick={() => {const myKey = movie._id; this.redirectToMovie(myKey)}} cols={1} rows={4}>
                                     <img src={movie.image} alt={movie.title}/>
                                     <GridListTileBar
                                         title={movie.title}

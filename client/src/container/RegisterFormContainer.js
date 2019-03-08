@@ -53,7 +53,6 @@ class RegisterFormContainer extends React.Component{
     }
 
     handleSubmit = ()=>{
-        console.log(this.state);
         fetch('http://127.0.0.1:3001/users/add', {
             method: "POST",
             mode: "cors",
@@ -63,7 +62,7 @@ class RegisterFormContainer extends React.Component{
             }
         })
         .then((response)=> response.json())
-        .then(data => {localStorage.setItem('token', data.token); console.log(data); this.setState({toDashboard: true});})
+        .then(data => {localStorage.setItem('token', data.token); this.setState({toDashboard: true});})
         .catch(error=>console.log(error));
     }
 
@@ -86,8 +85,6 @@ class RegisterFormContainer extends React.Component{
                     </Paper>
                 </main>
             );
-
-
         }
     }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import ActorForm from '../components/ActorForm';
+import MainMenuBar from '../components/MainMenuBar';
 
 class ActorFormContainer extends React.Component{
     state = {
@@ -29,7 +30,14 @@ class ActorFormContainer extends React.Component{
     }
 
     render(){
-        return <ActorForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        return (
+                <div>
+                    <nav>
+                        <MainMenuBar/>
+                    </nav>
+                    <ActorForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+                </div>
+                );
     }
 }
 
