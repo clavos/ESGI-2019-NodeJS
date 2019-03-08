@@ -81,7 +81,7 @@ class LoginFormContainer extends React.Component{
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign in
+                            Se connecter
                         </Typography>
                         <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
                     </Paper>
