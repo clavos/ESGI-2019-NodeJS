@@ -5,15 +5,12 @@ const verifyToken = (req, res, next) => {
     if(req.path === "/users/login_check" || req.path === "/user" || req.path === "/movies" || req.path === "/users/add" ){
         next();
     } else {
-        // console.log("check2");
         const auth = req.get('Authorization');
-        // console.log(typeof auth ,auth);
         if(!auth || !auth.startsWith('Bearer')){
             res.sendStatus(401);
         } else {
             verifyJWTToken.verifyToken(auth.replace('Bearer ', ''))
                 .then(decodedToken => {
-                    //console.log(decodedToken);
                     req.user = decodedToken;
                     next();
                 })
