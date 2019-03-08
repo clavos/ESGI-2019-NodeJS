@@ -1,7 +1,7 @@
 const verifyJWTToken = require('../libs/auth');
 
 const verifyToken = (req, res, next) => {
-    if(req.path === "/user/login_check" || req.path === "/user" ){
+    if(req.path === "/user/login_check" || req.path === "/movies" ){
         next();
     } else {
         const auth = req.get('Authorization');
