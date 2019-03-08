@@ -25,6 +25,8 @@
 
 .MuiGridListTile-root-118 {
   height: auto !important;
+  width: auto !important;
+  padding: 5px !important;
 }
 
 .MuiGridListTile-imgFullHeight-120 {
@@ -33,4 +35,8 @@
 
 .MuiGridListTile-tile-119 {
   display: table-cell !important;
+}
+
+.MuiGridListTileBar-title-129 {
+  text-align: center !important;
 }
