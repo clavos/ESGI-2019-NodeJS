@@ -3,6 +3,7 @@ import './App.css';
 import './components/ToggleButton'
 import LoginFormContainer from './container/LoginFormContainer';
 import ActorFormContainer from './container/ActorFormContainer';
+import ReviewFormContainer from './container/ReviewFormContainer';
 import ActorUpdate from './container/ActorUpdate';
 import MovieFormContainer from './container/MovieFormContainer';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -34,7 +35,9 @@ function AddMovies() {
 function AddActors() {
     return <ActorFormContainer/>;
 }
-
+function Reviews() {
+    return <ReviewFormContainer/>;
+}
 function UpdateActors() {
     return <ActorUpdate/>;
 }
@@ -50,6 +53,7 @@ function AppRouter() {
                 <Route path="/login" exact component={Login} />
                 <Route path="/dashboard" exact component={Dashboard} />
                 <Route path="/movies" exact component={Movies} />
+                <Route path="/review/add" exact component={Reviews} />
                 <Route path="/actor/add" exact component={AddActors} />
                 <Route path="/movie/add" exact component={AddMovies} />
                 <Route path="/actor/update" exact component={UpdateActors} />
