@@ -7,8 +7,8 @@ class ActorFormContainer extends React.Component{
     }
     
     state = {
-        firstname: "",
-        lastname: ""
+        firstName: "",
+        lastName: ""
     }
 
     handleChange = (value, field) => {
