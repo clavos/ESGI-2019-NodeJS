@@ -12,6 +12,7 @@ import MainMenuBar from './components/MainMenuBar';
 import Index from './container/Home';
 import DashboardA from './container/DashBoard';
 import ListMovies from "./container/ListMovies";
+import MovieDetailsComponent from './components/MovieDetailsComponent';
 
 function Login() {
     return <LoginFormContainer/>;
@@ -48,6 +49,15 @@ function UpdateActors() {
     return <ActorUpdate/>;
 }
 
+function disconnect() {
+    localStorage.removeItem("token");
+    return <LoginFormContainer/>;
+}
+
+function movieDetail(){
+    return <MovieDetailsComponent/>;
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -57,6 +67,7 @@ function AppRouter() {
                 </nav>
                 <Route path="/" exact component={Home} />
                 <Route path="/login" exact component={Login} />
+                <Route path="/disconnect" exact component={disconnect} />
                 <Route path="/Register" exact component={Register} />
                 <Route path="/dashboard" exact component={Dashboard} />
                 <Route path="/movies" exact component={Movies} />
@@ -64,6 +75,7 @@ function AppRouter() {
                 <Route path="/actor/add" exact component={AddActors} />
                 <Route path="/movie/add" exact component={AddMovies} />
                 <Route path="/actor/update" exact component={UpdateActors} />
+                <Route path="/movieDetail" exact component={movieDetail} />
             </div>
         </Router>
     );
