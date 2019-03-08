@@ -29,12 +29,12 @@ const styles = {
 
 class ListMovies extends React.Component {
 
-
     constructor() {
         super();
         this.state = {
             movies: [],
-            toMovie: false
+            toMovie: false,
+            movieid: null
         };
 
         this.getAllMovies();
@@ -51,21 +51,26 @@ class ListMovies extends React.Component {
         }).catch(error=>console.log(error));
     }
 
-    redirectToMovie = () => {
-        this.setState({toMovie: true});
+    redirectToMovie = (key) => {
+        console.log(key);
+        //this.setState({toMovie: true});
+        //this.setState({movieid: movieid});
     }
 
     render(){
         const { classes } =  this.props;
         if (this.state.toMovie === true) {
-            return <Redirect to='/movie/'/>
+            return <Redirect to= {{
+                pathname: '/movie',
+                search: '?mv='+this.state.movie_id
+            }}/>
         } else {
             return (<div>
                 <div className={classes.root}>
-                    <GridList cols={5} spacing={1} className={classes.gridList}>
+                    <GridList spacing={1} className={classes.gridList}>
                         {this.state.movies.map((movie) => {
                             return (
-                                <GridListTile onClick={this.redirectToMovie} key={movie._id} cols={1} rows={4}>
+                                <GridListTile key={movie._id} onClick={this.redirectToMovie(movie._id)} cols={1} rows={4}>
                                     <img src={movie.image} alt={movie.title}/>
                                     <GridListTileBar
                                         title={movie.title}
