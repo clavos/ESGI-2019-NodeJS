@@ -3,6 +3,7 @@ const Review = require('../models/review');
 const router = express.Router();
 const verifyJWTToken = require('../libs/auth');
 const User = require('../models/user');
+const Movie = require('../models/movie');
 
 router.get('/', (req, res) => {
     Review.find(req.query)
@@ -19,35 +20,40 @@ router.get('/', (req, res) => {
 router.post('/add', (req, res) => {
     const auth = req.get('Authorization');
     console.log("review", auth);
-    if(!auth || !auth.startsWith('Bearer')){
-        res.sendStatus(401);
-    } else {
-        verifyJWTToken.verifyToken(auth.replace('Bearer ', ''))
-            .then(decodedToken => {
-                console.log("enter0", decodedToken.username);
-                console.log("enter");
-                User.findOne({username: decodedToken.username}).then(user =>{
-                    const review = new Review({
-                        User: user._id,
-                        comment: req.body.comment,
-                        score: req.body.score
-                    });
-                    review.save()
-                        .then(data => {
-                            res.status(200).send(data);
-                        }).catch(err => {
-                        res.status(500).send({
-                            message: err.message || "Some error occurred while creating the review."
-                        });
-                    });
-                })
-                
-            })
-            .catch(error => res.status(400).send({
-                error: "JWT TOKEN invalid",
-                details: error
-            }));
-    }
+    Movie.findById(req.body.idMovie).then(movies=>{
+        if(!movies){
+            return res.status(400).json("Movie not found");
+        }else{
+            if(!auth || !auth.startsWith('Bearer')){
+                res.sendStatus(401);
+            } else {
+                verifyJWTToken.verifyToken(auth.replace('Bearer ', ''))
+                    .then(decodedToken => {
+                        User.findOne({username: decodedToken.username}).then(user =>{
+                            movies.reviews.push({
+                                User: user._id,
+                                Comment: req.body.Comment,
+                                score: req.body.score
+                            });
+                            movies.save()
+                                .then(data => {
+                                    res.status(200).send(data);
+                                }).catch(err => {
+                                res.status(500).send({
+                                    message: err.message || "Some error occurred while creating the review."
+                                });
+                            });
+                        })
+                        
+                    })
+                    .catch(error => res.status(400).send({
+                        error: "JWT TOKEN invalid",
+                        details: error
+                    }));
+            }
+        }
+    })
+    
     
 });
 

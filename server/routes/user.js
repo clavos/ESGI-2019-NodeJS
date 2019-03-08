@@ -61,7 +61,11 @@ router.post('/add', (req, res) => {
     });
     user.save()
         .then(data => {
-            res.status(200).send(data);
+            const {password, ...payload} = data.toJSON();
+            res.json({
+                success: true,
+                token: `Bearer ${webtoken(payload)}`
+            });
         }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while creating the user."
