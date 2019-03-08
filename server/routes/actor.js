@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
             });
         });
 });
-
 //Add actor
 router.post('/add', (req, res) => {
     // Validate request
@@ -41,7 +40,6 @@ router.post('/add', (req, res) => {
         });
     });
 });
-
 //Get actor by id
 router.get('/:id', (req, res) => {
     Actor.findById(req.params.id)
@@ -63,7 +61,6 @@ router.get('/:id', (req, res) => {
         });
     });
 });
-
 //Update an actor
 router.put('/update/:id', (req, res) => {
     // Validate request
@@ -100,7 +97,7 @@ router.put('/update/:id', (req, res) => {
         });
     });
 });
-
+//Delete an actor
 router.delete('/delete/:id', (req, res) => {
     Actor.findByIdAndRemove(req.params.id)
         .then(data => {

@@ -1,14 +1,14 @@
 import React from "react";
-import ActorForm from '../components/ActorForm';
+import MovieForm from '../components/MovieForm';
 
-class ActorFormContainer extends React.Component{
+class MovieFormContainer extends React.Component{
     constructor(props){
         super(props);
     }
-    
+
     state = {
-        firstName: "",
-        lastName: ""
+        title: "",
+        description: ""
     }
 
     handleChange = (value, field) => {
@@ -19,7 +19,7 @@ class ActorFormContainer extends React.Component{
     }
 
     handleSubmit = ()=>{
-        fetch('http://127.0.0.1:3001/actors/add', {
+        fetch('http://127.0.0.1:3001/movies/add', {
             method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
@@ -28,14 +28,14 @@ class ActorFormContainer extends React.Component{
                 'Authorization': localStorage.getItem('token')
             }
         })
-        .then((response)=> response.json())
-        .then(data => {console.log(data)})
-        .catch(error=>console.log(error));
+            .then((response)=> response.json())
+            .then(data => {console.log(data)})
+            .catch(error=>console.log(error));
     }
 
     render(){
-        return <ActorForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        return <MovieForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
     }
 }
 
-export default ActorFormContainer;
+export default MovieFormContainer;

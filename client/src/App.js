@@ -7,7 +7,7 @@ import LoginForm from './components/LoginForm';
 import LoginFormContainer from './container/LoginFormContainer';
 import ActorFormContainer from './container/ActorFormContainer';
 import ReviewFormContainer from './container/ReviewFormContainer';
-
+import MovieFormContainer from './container/MovieFormContainer';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MainMenuBar from './components/MainMenuBar';
 import Index from './container/Home';
@@ -30,7 +30,11 @@ function Movies() {
     return <ListMovies/>;
 }
 
-function Actors() {
+function AddMovies() {
+    return <MovieFormContainer/>
+}
+
+function AddActors() {
     return <ActorFormContainer/>;
 }
 
@@ -49,9 +53,9 @@ function AppRouter() {
                 <Route path="/login" exact component={Login} />
                 <Route path="/dashboard" exact component={Dashboard} />
                 <Route path="/movies" exact component={Movies} />
-                <Route path="/addactors" exact component={Actors} />
                 <Route path="/review/add" exact component={Reviews} />
-
+                <Route path="/actor/add" exact component={AddActors} />
+                <Route path="/movie/add" exact component={AddMovies} />
             </div>
         </Router>
     );
