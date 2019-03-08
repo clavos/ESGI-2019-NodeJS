@@ -12,6 +12,7 @@ import MainMenuBar from './components/MainMenuBar';
 import Index from './container/Home';
 import DashboardA from './container/DashBoard';
 import ListMovies from "./container/ListMovies";
+import MovieDetailsComponent from './components/MovieDetailsComponent';
 
 function Login() {
     return <LoginFormContainer/>;
@@ -53,6 +54,10 @@ function disconnect() {
     return <LoginFormContainer/>;
 }
 
+function movieDetail(){
+    return <MovieDetailsComponent/>;
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -70,6 +75,7 @@ function AppRouter() {
                 <Route path="/actor/add" exact component={AddActors} />
                 <Route path="/movie/add" exact component={AddMovies} />
                 <Route path="/actor/update" exact component={UpdateActors} />
+                <Route path="/movieDetail" exact component={movieDetail} />
             </div>
         </Router>
     );
