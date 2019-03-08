@@ -48,6 +48,11 @@ function UpdateActors() {
     return <ActorUpdate/>;
 }
 
+function disconnect() {
+    localStorage.removeItem("token");
+    return <LoginFormContainer/>;
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -57,6 +62,7 @@ function AppRouter() {
                 </nav>
                 <Route path="/" exact component={Home} />
                 <Route path="/login" exact component={Login} />
+                <Route path="/disconnect" exact component={disconnect} />
                 <Route path="/Register" exact component={Register} />
                 <Route path="/dashboard" exact component={Dashboard} />
                 <Route path="/movies" exact component={Movies} />
