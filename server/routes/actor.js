@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
 //Add actor
 router.post('/add', (req, res) => {
     // Validate request
-    if(!req.body.firstname) {
+    console.log("here");
+    if(!req.body.firstName) {
         return res.status(400).send({
             message: "Firstname content can not be empty"
         });
@@ -28,8 +29,8 @@ router.post('/add', (req, res) => {
         });
     }
     const actor = new Actor({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
+        firstname: req.body.firstName,
+        lastname: req.body.lastName
     });
     actor.save()
         .then(data => {

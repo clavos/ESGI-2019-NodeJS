@@ -4,30 +4,29 @@ import ActorForm from '../components/ActorForm';
 class ActorFormContainer extends React.Component{
     constructor(props){
         super(props);
-        this.state.method = (this.props.method == 'POST')?'POST':'PUT';
     }
     
     state = {
-        firstname: "",
-        lastname: "",
-        method : ""
+        firstName: "",
+        lastName: ""
     }
 
     handleChange = (value, field) => {
+        console.log(value, field);
         this.setState({
             [field]: value
         });
     }
 
     handleSubmit = ()=>{
-        console.log(this.props.method);
-        console.log(JSON.stringify(this.state));
-        fetch('http://127.0.0.1:3000/actors/add', {
+        console.log(JSON.stringify(this.state), localStorage.getItem('token'));
+        fetch('http://127.0.0.1:3001/actor/add', {
             method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                'Authorization': localStorage.getItem('token')
             }
         })
         .then((response)=> response.json())
