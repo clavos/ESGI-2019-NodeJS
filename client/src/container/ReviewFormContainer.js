@@ -2,17 +2,12 @@ import React from "react";
 import ReviewForm from '../components/ReviewForm';
 
 class ReviewFormContainer extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    
     state = {
         score: "",
         Comment: ""
     }
 
     handleChange = (value, field) => {
-        console.log(value, field);
         this.setState({
             [field]: value
         });
@@ -20,7 +15,7 @@ class ReviewFormContainer extends React.Component{
 
     handleSubmit = ()=>{
         console.log(JSON.stringify(this.state), localStorage.getItem('token'));
-        fetch('http://127.0.0.1:3001/review/add', {
+        fetch('http://127.0.0.1:3001/reviews/add', {
             method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
