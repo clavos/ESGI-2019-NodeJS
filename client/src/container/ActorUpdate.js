@@ -14,8 +14,10 @@ class ActorFormContainer extends React.Component{
     }
 
     handleSubmit = ()=>{
-        fetch('http://127.0.0.1:3001/actors/add', {
-            method: "POST",
+        //this.state.id = "5c823c4093fb06001c606d19";
+        console.log(this.state);
+        fetch('http://127.0.0.1:3001/actors/update/'+this.state.id, {
+            method: "PUT",
             mode: "cors",
             body: JSON.stringify(this.state),
             headers: {
@@ -23,9 +25,9 @@ class ActorFormContainer extends React.Component{
                 'Authorization': localStorage.getItem('token')
             }
         })
-        .then((response)=> response.json())
-        .then(data => {console.log(data)})
-        .catch(error=>console.log(error));
+            .then((response)=> response.json())
+            .then(data => {console.log(data)})
+            .catch(error=>console.log(error));
     }
 
     render(){
