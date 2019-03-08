@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-//app.use(verifyToken);
+app.use(verifyToken);
 app.use('/movies', MovieRoute);
 app.use('/user', UserRoute);
 app.use('/actor', actorRoute);
