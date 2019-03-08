@@ -14,6 +14,8 @@ import DashboardA from './container/DashBoard';
 import ListMovies from "./container/ListMovies";
 import Movie from './container/Movie';
 import Unknow from "./container/Unknow";
+import MovieDetailsComponent from './components/MovieDetailsComponent';
+
 
 function Login() {
     return <LoginFormContainer/>;
@@ -50,6 +52,7 @@ function UpdateActors() {
     return <ActorUpdate/>;
 }
 
+
 function RateMovie() {
     return <Movie/>;
 }
@@ -57,6 +60,16 @@ function RateMovie() {
 function NoMatch() {
     return <Unknow/>;
 }
+
+function disconnect() {
+    localStorage.removeItem("token");
+    return <LoginFormContainer/>;
+}
+
+function movieDetail(){
+    return <MovieDetailsComponent/>;
+}
+
 function AppRouter() {
     return (
         <Router>
@@ -64,6 +77,7 @@ function AppRouter() {
                 <nav>
                     <MainMenuBar/>
                 </nav>
+
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/login" exact component={Login} />
@@ -75,6 +89,7 @@ function AppRouter() {
                     <Route path="/movie/add" exact component={AddMovies} />
                     <Route path="/actor/update" exact component={UpdateActors} />
                     <Route path="/movie" exact component={RateMovie} />
+                    <Route path="/movieDetail" exact component={movieDetail} />
                     <Route component={NoMatch} />
                 </Switch>
             </div>
