@@ -34,7 +34,20 @@ class LoginFormContainer extends React.Component{
         if (this.state.toDashboard === true) {
             return <Redirect to='/dashboard'/>
         } else {
-            return <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+            return (
+                <main className={classes.main}>
+                    <CssBaseline />
+                    <Paper className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Se connecter
+                        </Typography>
+                        <LoginForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+                    </Paper>
+                </main>
+            );
         }
     }
 }

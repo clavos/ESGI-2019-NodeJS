@@ -68,7 +68,7 @@ class LoginForm extends React.Component {
                     color="primary"
                     className={classes.submit}
                 >
-                    Sign in
+                    Se connecter
                 </Button>
              </form>);
     }

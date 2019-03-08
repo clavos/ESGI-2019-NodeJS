@@ -3,6 +3,7 @@ const User = require('../models/user');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const webtoken = require('../libs/auth').createToken;
+var bcrypt = require('bcryptjs');
 
 router.get('/', (req, res) => {
     User.find(req.query)
@@ -12,14 +13,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/login_check', (req, res) => {
-    console.log(req.body.username, req.body.password);
     User.findOne({username: req.body.username}).then(user => {
-        console.log(user)
         if(!user){
             return res.status(400).json("Invalid credentials");
         }
-        else if(req.body.password == user.password){
-            
+        else if(bcrypt.compareSync(req.body.password, user.password)){
             const {password, ...payload} = user.toJSON();
             res.json({
                         success: true,
@@ -35,7 +33,7 @@ router.post('/login_check', (req, res) => {
             //         });
             //     }
             // });
-            
+
         }
         else{
             return res.status(400).json("Marlène Marche pas");
@@ -55,21 +53,28 @@ router.post('/add', (req, res) => {
             message: "Password content can not be empty"
         });
     }
-    const user = new User({
+
+    const newUser = new User({
         username: req.body.username,
-        password: req.body.password
+        password: bcrypt.hashSync(req.body.password, process.env.SALT)
     });
-    user.save()
-        .then(data => {
-            const {password, ...payload} = data.toJSON();
-            res.json({
-                success: true,
-                token: `Bearer ${webtoken(payload)}`
+    User.findOne({username: req.body.username}).then(user => {
+        if(!user){
+            newUser.save()
+                .then(data => {
+                    const {password, ...payload} = data.toJSON();
+                    res.json({
+                        success: true,
+                        token: `Bearer ${webtoken(payload)}`
+                    });
+                }).catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred while creating the user."
+                });
             });
-        }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the user."
-        });
+        } else {
+            return res.status(401).json("Username already taken !");
+        }
     });
 });
 module.exports = router;
