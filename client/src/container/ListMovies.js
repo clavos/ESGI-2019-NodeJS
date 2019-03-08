@@ -58,7 +58,7 @@ class ListMovies extends React.Component {
     render(){
         const { classes } =  this.props;
         if (this.state.toMovie === true) {
-            return <Redirect to='/dashboard'/>
+            return <Redirect to='/movie/'+{movie._id}/>
         } else {
             return (<div>
                 <div className={classes.root}>
