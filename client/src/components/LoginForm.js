@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
             <p>Username</p>
             <input name="username" onChange={(event) => this.props.onChange(event.currentTarget.value, "username")}/>
             <p>Password</p>
-            <input name="password" onChange={(event) => this.props.onChange(event.currentTarget.value, "password")}/>
+            <input name="password" onChange={(event) => this.props.onChange(event.currentTarget.value, "password")}/><br/>
             <input type="submit" value="Submit"/>
         </form>
     }

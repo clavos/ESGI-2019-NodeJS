@@ -1,6 +1,8 @@
 const express = require('express');
 const Review = require('../models/review');
 const router = express.Router();
+const verifyJWTToken = require('../libs/auth');
+const User = require('../models/user');
 
 router.get('/', (req, res) => {
     Review.find(req.query)
@@ -15,18 +17,38 @@ router.get('/', (req, res) => {
 
 //Add review
 router.post('/add', (req, res) => {
-    const review = new Review({
-        comment: req.body.comment,
-        score: req.body.score
-    });
-    review.save()
-        .then(data => {
-            res.status(200).send(data);
-        }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the review."
-        });
-    });
+    const auth = req.get('Authorization');
+    console.log("review", auth);
+    if(!auth || !auth.startsWith('Bearer')){
+        res.sendStatus(401);
+    } else {
+        verifyJWTToken.verifyToken(auth.replace('Bearer ', ''))
+            .then(decodedToken => {
+                console.log("enter0", decodedToken.username);
+                console.log("enter");
+                User.findOne({username: decodedToken.username}).then(user =>{
+                    const review = new Review({
+                        User: user._id,
+                        comment: req.body.comment,
+                        score: req.body.score
+                    });
+                    review.save()
+                        .then(data => {
+                            res.status(200).send(data);
+                        }).catch(err => {
+                        res.status(500).send({
+                            message: err.message || "Some error occurred while creating the review."
+                        });
+                    });
+                })
+                
+            })
+            .catch(error => res.status(400).send({
+                error: "JWT TOKEN invalid",
+                details: error
+            }));
+    }
+    
 });
 
 //Get review by id

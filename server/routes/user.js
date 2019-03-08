@@ -20,7 +20,7 @@ router.post('/login_check', (req, res) => {
         }
         else if(req.body.password == user.password){
             
-            const {password, ...payload} = user;
+            const {password, ...payload} = user.toJSON();
             res.json({
                         success: true,
                         token: `Bearer ${webtoken(payload)}`
