@@ -1,14 +1,14 @@
 import React from "react";
-import ActorForm from '../components/ActorForm';
+import ReviewForm from '../components/ReviewForm';
 
-class ActorFormContainer extends React.Component{
+class ReviewFormContainer extends React.Component{
     constructor(props){
         super(props);
     }
     
     state = {
-        firstName: "",
-        lastName: ""
+        score: "",
+        Comment: ""
     }
 
     handleChange = (value, field) => {
@@ -19,7 +19,8 @@ class ActorFormContainer extends React.Component{
     }
 
     handleSubmit = ()=>{
-        fetch('http://127.0.0.1:3001/actors/add', {
+        console.log(JSON.stringify(this.state), localStorage.getItem('token'));
+        fetch('http://127.0.0.1:3001/review/add', {
             method: "POST",
             mode: "cors",
             body: JSON.stringify(this.state),
@@ -34,8 +35,8 @@ class ActorFormContainer extends React.Component{
     }
 
     render(){
-        return <ActorForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        return <ReviewForm onSubmit={this.handleSubmit} onChange={this.handleChange}/>
     }
 }
 
-export default ActorFormContainer;
+export default ReviewFormContainer;

@@ -13,11 +13,11 @@ router.get('/', (req, res) => {
             });
         });
 });
-
 //Add actor
 router.post('/add', (req, res) => {
     // Validate request
-    if(!req.body.firstname) {
+    console.log("here");
+    if(!req.body.firstName) {
         return res.status(400).send({
             message: "Firstname content can not be empty"
         });
@@ -28,8 +28,8 @@ router.post('/add', (req, res) => {
         });
     }
     const actor = new Actor({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
+        firstname: req.body.firstName,
+        lastname: req.body.lastName
     });
     actor.save()
         .then(data => {
@@ -40,7 +40,6 @@ router.post('/add', (req, res) => {
         });
     });
 });
-
 //Get actor by id
 router.get('/:id', (req, res) => {
     Actor.findById(req.params.id)
@@ -62,7 +61,6 @@ router.get('/:id', (req, res) => {
         });
     });
 });
-
 //Update an actor
 router.put('/update/:id', (req, res) => {
     // Validate request
@@ -99,7 +97,7 @@ router.put('/update/:id', (req, res) => {
         });
     });
 });
-
+//Delete an actor
 router.delete('/delete/:id', (req, res) => {
     Actor.findByIdAndRemove(req.params.id)
         .then(data => {
